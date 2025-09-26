@@ -1,7 +1,9 @@
-[gd_scene load_steps=17 format=3 uid="uid://b45y82043ints"]
+[gd_scene load_steps=18 format=3 uid="uid://b45y82043ints"]
 
+[ext_resource type="PackedScene" uid="uid://om5akloqjtgr" path="res://Assets/Models/Asteroid.glb" id="1_r8bcl"]
 [ext_resource type="Script" uid="uid://4pps32ny272s" path="res://Scripts/player_controller.gd" id="1_wbxth"]
 [ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Ship.glb" id="2_m34ki"]
+[ext_resource type="PackedScene" uid="uid://dbulwb1uiwu3r" path="res://Assets/Models/EnemyShip.glb" id="2_rlidi"]
 [ext_resource type="Texture2D" uid="uid://c7uw00mrd23xe" path="res://Assets/Materials/star_01.png" id="3_m34ki"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbxth"]
@@ -23,8 +25,6 @@ fog_depth_end = 4000.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_kwrm5"]
 size = Vector3(2, 0.792725, 2.92139)
-
-[sub_resource type="BoxMesh" id="BoxMesh_wbxth"]
 
 [sub_resource type="Shader" id="Shader_wbxth"]
 code = "shader_type spatial;
@@ -86,6 +86,18 @@ material = SubResource("StandardMaterial3D_r8bcl")
 
 [node name="Node3D" type="Node3D"]
 
+[node name="Asteroid" parent="." instance=ExtResource("1_r8bcl")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22099, -1.79732, 4.83889)
+
+[node name="Asteroid2" parent="." instance=ExtResource("1_r8bcl")]
+transform = Transform3D(-0.962156, -0.256917, 0.0908287, -0.270273, 0.857195, -0.438371, 0.0347669, -0.44633, -0.894193, -12.4242, -6.5268, 8.82796)
+
+[node name="EnemyShip" parent="." instance=ExtResource("2_rlidi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.11, 0.958, 13.639)
+
+[node name="EnemyShip2" parent="." instance=ExtResource("2_rlidi")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.25195, -4.7899, 7.20386)
+
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kwrm5")
 
@@ -100,22 +112,6 @@ script = ExtResource("1_wbxth")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152588, 0.466553)
 shape = SubResource("BoxShape3D_kwrm5")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.73307, 5.43436)
-mesh = SubResource("BoxMesh_wbxth")
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22099, -1.79732, 4.83889)
-mesh = SubResource("BoxMesh_wbxth")
-
-[node name="MeshInstance3D3" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.4242, -6.5268, 8.82796)
-mesh = SubResource("BoxMesh_wbxth")
-
-[node name="MeshInstance3D4" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.25195, -4.7899, 7.20386)
-mesh = SubResource("BoxMesh_wbxth")
 
 [node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
 script = ExtResource("1_wbxth")

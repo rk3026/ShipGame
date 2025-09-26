@@ -1,0 +1,469 @@
+[gd_scene load_steps=5 format=3 uid="uid://deroj6df11yqa"]
+
+[ext_resource type="Script" uid="uid://ci7fucj262i47" path="res://Scenes/Menus/settings_menu.gd" id="1_s1iiq"]
+[ext_resource type="FontFile" uid="uid://bokokxu6rx603" path="res://Assets/Fonts/GodotFontPack/connection_ii/ConnectionII.otf" id="3_85haa"]
+[ext_resource type="Theme" uid="uid://sx8r7eylidoh" path="res://Assets/Themes/Classic311/Classic311.tres" id="3_dp13d"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_nnh20"]
+font = ExtResource("3_85haa")
+font_size = 80
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_s1iiq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer2" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer2"]
+layout_mode = 2
+theme = ExtResource("3_dp13d")
+text = "Settings"
+label_settings = SubResource("LabelSettings_nnh20")
+horizontal_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 10
+
+[node name="TabContainer" type="TabContainer" parent="Panel/VBoxContainer/MarginContainer"]
+layout_mode = 2
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+current_tab = 0
+
+[node name="Game" type="Panel" parent="Panel/VBoxContainer/MarginContainer/TabContainer"]
+layout_mode = 2
+metadata/_tab_index = 0
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Show Tutorials"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dp13d")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Other"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+tick_count = 20
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Something Else"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+text = "4"
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Another Setting"
+
+[node name="Tree" type="Tree" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Game/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_dp13d")
+
+[node name="Controls" type="Panel" parent="Panel/VBoxContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "New Thing"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dp13d")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Other"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+tick_count = 20
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Something Else"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+text = "4"
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Another Setting"
+
+[node name="Tree" type="Tree" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Controls/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_dp13d")
+
+[node name="Video" type="Panel" parent="Panel/VBoxContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Different"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dp13d")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Other"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+tick_count = 20
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Something Else"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+text = "4"
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Another Setting"
+
+[node name="Tree" type="Tree" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Video/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_dp13d")
+
+[node name="Audio" type="Panel" parent="Panel/VBoxContainer/MarginContainer/TabContainer"]
+visible = false
+layout_mode = 2
+metadata/_tab_index = 3
+
+[node name="MarginContainer" type="MarginContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 20
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "New Item"
+
+[node name="CheckButton" type="CheckButton" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+theme = ExtResource("3_dp13d")
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Other"
+
+[node name="HSlider" type="HSlider" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+tick_count = 20
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Something Else"
+
+[node name="LineEdit" type="LineEdit" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 4
+theme = ExtResource("3_dp13d")
+text = "4"
+alignment = 1
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Another Setting"
+
+[node name="Tree" type="Tree" parent="Panel/VBoxContainer/MarginContainer/TabContainer/Audio/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme = ExtResource("3_dp13d")
+
+[node name="BackToTitleButton" type="Button" parent="Panel"]
+layout_mode = 2
+offset_right = 103.0
+offset_bottom = 31.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+theme = ExtResource("3_dp13d")
+theme_override_fonts/font = ExtResource("3_85haa")
+theme_override_font_sizes/font_size = 40
+text = "Back to Title"
+
+[connection signal="tab_selected" from="Panel/VBoxContainer/MarginContainer/TabContainer" to="." method="_on_tab_container_tab_selected"]
+[connection signal="pressed" from="Panel/BackToTitleButton" to="." method="_on_back_to_title_button_pressed"]

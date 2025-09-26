@@ -1,0 +1,195 @@
+[gd_scene load_steps=18 format=3 uid="uid://ck7h87wlhhmko"]
+
+[ext_resource type="PackedScene" uid="uid://om5akloqjtgr" path="res://Assets/Models/Asteroid.glb" id="1_aur2u"]
+[ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Ship.glb" id="1_pha2q"]
+[ext_resource type="PackedScene" uid="uid://dbulwb1uiwu3r" path="res://Assets/Models/EnemyShip.glb" id="2_5wi6m"]
+[ext_resource type="Texture2D" uid="uid://c7uw00mrd23xe" path="res://Assets/Materials/star_01.png" id="2_penys"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbxth"]
+sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+ground_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
+
+[sub_resource type="Sky" id="Sky_m34ki"]
+sky_material = SubResource("ProceduralSkyMaterial_wbxth")
+
+[sub_resource type="Environment" id="Environment_kwrm5"]
+background_mode = 2
+sky = SubResource("Sky_m34ki")
+tonemap_mode = 2
+fog_enabled = true
+fog_light_color = Color(0.0995546, 0.112246, 0.132199, 1)
+fog_density = 0.05
+fog_depth_begin = 0.0
+fog_depth_end = 4000.0
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kwrm5"]
+size = Vector3(2, 0.792725, 2.92139)
+
+[sub_resource type="Shader" id="Shader_wbxth"]
+code = "shader_type spatial;
+
+uniform sampler2D tex;
+uniform vec2 speed = vec2(0.0, 0.07);
+
+void vertex() {
+	// Called for every vertex the material is visible on.
+	
+}
+
+void fragment() {
+	// Called for every pixel the material is visible on.
+	ALBEDO = texture(tex, UV+TIME * speed).rgb;
+}
+
+//void light() {
+//	// Called for every pixel for every light affecting the material.
+//	// Uncomment to replace the default light processing function with this one.
+//}
+"
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_wbxth"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m34ki"]
+noise = SubResource("FastNoiseLite_wbxth")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m34ki"]
+render_priority = 0
+shader = SubResource("Shader_wbxth")
+shader_parameter/tex = SubResource("NoiseTexture2D_m34ki")
+shader_parameter/speed = Vector2(0, 0.07)
+
+[sub_resource type="QuadMesh" id="QuadMesh_kwrm5"]
+material = SubResource("ShaderMaterial_m34ki")
+size = Vector2(100, 200)
+orientation = 1
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_kwrm5"]
+emission_shape = 6
+emission_ring_axis = Vector3(0, 0, 1)
+emission_ring_height = 50.0
+emission_ring_radius = 30.0
+emission_ring_inner_radius = 0.0
+emission_ring_cone_angle = 90.0
+direction = Vector3(0, 0, 1)
+spread = 0.0
+initial_velocity_min = 100.0
+initial_velocity_max = 200.0
+gravity = Vector3(0, 0, 0)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r8bcl"]
+transparency = 1
+albedo_texture = ExtResource("2_penys")
+
+[sub_resource type="QuadMesh" id="QuadMesh_rlidi"]
+material = SubResource("StandardMaterial3D_r8bcl")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pha2q"]
+bg_color = Color(0, 0, 0, 0.392157)
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="Node3D" type="Node3D" parent="SubViewportContainer/SubViewport"]
+
+[node name="Asteroid" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("1_aur2u")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22099, -1.79732, 4.83889)
+
+[node name="Asteroid2" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("1_aur2u")]
+transform = Transform3D(-0.962156, -0.256917, 0.0908287, -0.270273, 0.857195, -0.438371, 0.0347669, -0.44633, -0.894193, -12.4242, -6.5268, 8.82796)
+
+[node name="EnemyShip" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("2_5wi6m")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.11, 0.958, 13.639)
+
+[node name="EnemyShip2" parent="SubViewportContainer/SubViewport/Node3D" instance=ExtResource("2_5wi6m")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.25195, -4.7899, 7.20386)
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="SubViewportContainer/SubViewport/Node3D"]
+environment = SubResource("Environment_kwrm5")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
+
+[node name="CharacterBody3D" type="CharacterBody3D" parent="SubViewportContainer/SubViewport/Node3D"]
+
+[node name="Ship" parent="SubViewportContainer/SubViewport/Node3D/CharacterBody3D" instance=ExtResource("1_pha2q")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="SubViewportContainer/SubViewport/Node3D/CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152588, 0.466553)
+shape = SubResource("BoxShape3D_kwrm5")
+
+[node name="CharacterBody3D2" type="CharacterBody3D" parent="SubViewportContainer/SubViewport/Node3D"]
+
+[node name="Camera3D" type="Camera3D" parent="SubViewportContainer/SubViewport/Node3D/CharacterBody3D2"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.85186, -5.67283)
+
+[node name="Terrain" type="MeshInstance3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.47722, 41.5058)
+mesh = SubResource("QuadMesh_kwrm5")
+
+[node name="Stars" type="GPUParticles3D" parent="SubViewportContainer/SubViewport/Node3D"]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 3.28126)
+amount = 500
+process_material = SubResource("ParticleProcessMaterial_kwrm5")
+draw_pass_1 = SubResource("QuadMesh_rlidi")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 120
+theme_override_constants/margin_top = 80
+theme_override_constants/margin_right = 120
+theme_override_constants/margin_bottom = 80
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+theme_override_styles/normal = SubResource("StyleBoxFlat_pha2q")
+text = "Ship Game"
+horizontal_alignment = 1
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 6
+theme_override_constants/separation = 20
+
+[node name="Button" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Start"
+
+[node name="Button2" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Settings"
+
+[node name="Button3" type="Button" parent="MarginContainer/VBoxContainer2/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 32
+text = "Exit"

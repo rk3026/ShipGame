@@ -1,0 +1,38 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://b0rodbi5ffdsx"
+path.s3tc="res://.godot/imported/Asteroid_Asteroid.png-99f8ae902a7d6817337f84cd3ac5731a.s3tc.ctex"
+metadata={
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
+}
+generator_parameters={
+"md5": "acd01a96c63d9f2feb82da2d1e2b5a05"
+}
+
+[deps]
+
+source_file="res://Assets/Models/Asteroid_Asteroid.png"
+dest_files=["res://.godot/imported/Asteroid_Asteroid.png-99f8ae902a7d6817337f84cd3ac5731a.s3tc.ctex"]
+
+[params]
+
+compress/mode=2
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=0
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=0
+roughness/src_normal=""
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

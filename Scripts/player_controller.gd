@@ -1,20 +1,24 @@
 extends CharacterBody3D
 
-@export
-var SPEED:float = 5.0
+@export var input_handler : Node3D
+@export var movement : Node3D
+@export var weapon : Node3D
+@export var health : Node3D
 
-func _physics_process(delta: float) -> void:
+func _ready():
+	add_to_group("player")
+	collision_layer = 1
+	
+	input_handler.move_requested.connect(_on_move_requested)
+	input_handler.shoot_pressed.connect(weapon.try_shoot)
+	input_handler.roll_requested.connect(movement.start_roll)
+	health.died.connect(_on_player_died)
 
+func _on_move_requested(input_dir: Vector2):
+	movement.update_movement(get_physics_process_delta_time(), input_dir)
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
-	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")
-	var direction := (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	if direction:
-		velocity.x = direction.x * SPEED
-		velocity.y = direction.z * SPEED
-	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
-		velocity.y = move_toward(velocity.y, 0, SPEED)
+func take_damage(amount: int):
+	health.take_damage(amount)
 
-	move_and_slide()
+func _on_player_died():
+	pass

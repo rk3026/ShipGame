@@ -1,7 +1,7 @@
 [gd_scene load_steps=18 format=3 uid="uid://ck7h87wlhhmko"]
 
 [ext_resource type="PackedScene" uid="uid://om5akloqjtgr" path="res://Assets/Models/Asteroid.glb" id="1_aur2u"]
-[ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Ship.glb" id="1_pha2q"]
+[ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Models/Ship.glb" id="1_pha2q"]
 [ext_resource type="PackedScene" uid="uid://dbulwb1uiwu3r" path="res://Assets/Models/EnemyShip.glb" id="2_5wi6m"]
 [ext_resource type="Texture2D" uid="uid://c7uw00mrd23xe" path="res://Assets/Materials/star_01.png" id="2_penys"]
 

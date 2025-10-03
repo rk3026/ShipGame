@@ -1,10 +1,10 @@
-[gd_scene load_steps=18 format=3 uid="uid://b45y82043ints"]
+[gd_scene load_steps=17 format=3 uid="uid://b45y82043ints"]
 
 [ext_resource type="PackedScene" uid="uid://om5akloqjtgr" path="res://Assets/Models/Asteroid.glb" id="1_r8bcl"]
-[ext_resource type="Script" uid="uid://4pps32ny272s" path="res://Scripts/player_controller.gd" id="1_wbxth"]
-[ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Ship.glb" id="2_m34ki"]
-[ext_resource type="PackedScene" uid="uid://dbulwb1uiwu3r" path="res://Assets/Models/EnemyShip.glb" id="2_rlidi"]
 [ext_resource type="Texture2D" uid="uid://c7uw00mrd23xe" path="res://Assets/Materials/star_01.png" id="3_m34ki"]
+[ext_resource type="PackedScene" uid="uid://bk187oli5igtq" path="res://Scenes/player.tscn" id="4_r8bcl"]
+[ext_resource type="Script" uid="uid://c01e2i4xwbdfr" path="res://Scripts/camera_follow.gd" id="5_camera"]
+[ext_resource type="PackedScene" uid="uid://baw3k4vhf8wxn" path="res://Scenes/enemy.tscn" id="5_rlidi"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_wbxth"]
 sky_horizon_color = Color(0.662243, 0.671743, 0.686743, 1)
@@ -22,9 +22,6 @@ fog_light_color = Color(0.0995546, 0.112246, 0.132199, 1)
 fog_density = 0.05
 fog_depth_begin = 0.0
 fog_depth_end = 4000.0
-
-[sub_resource type="BoxShape3D" id="BoxShape3D_kwrm5"]
-size = Vector3(2, 0.792725, 2.92139)
 
 [sub_resource type="Shader" id="Shader_wbxth"]
 code = "shader_type spatial;
@@ -92,33 +89,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.22099, -1.79732, 4.83889)
 [node name="Asteroid2" parent="." instance=ExtResource("1_r8bcl")]
 transform = Transform3D(-0.962156, -0.256917, 0.0908287, -0.270273, 0.857195, -0.438371, 0.0347669, -0.44633, -0.894193, -12.4242, -6.5268, 8.82796)
 
-[node name="EnemyShip" parent="." instance=ExtResource("2_rlidi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -2.11, 0.958, 13.639)
-
-[node name="EnemyShip2" parent="." instance=ExtResource("2_rlidi")]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 2.25195, -4.7899, 7.20386)
-
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_kwrm5")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.866025, -0.433013, 0.25, 0, 0.5, 0.866025, -0.5, 0.75, -0.433013, 0, 0, 0)
 
-[node name="CharacterBody3D" type="CharacterBody3D" parent="."]
-script = ExtResource("1_wbxth")
-
-[node name="Ship" parent="CharacterBody3D" instance=ExtResource("2_m34ki")]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0152588, 0.466553)
-shape = SubResource("BoxShape3D_kwrm5")
-
-[node name="CharacterBody3D2" type="CharacterBody3D" parent="."]
-script = ExtResource("1_wbxth")
-SPEED = 4.0
-
-[node name="Camera3D" type="Camera3D" parent="CharacterBody3D2"]
-transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 1.85186, -5.67283)
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.026218, 2.9526625, -5.98736)
+script = ExtResource("5_camera")
+follow_target = NodePath("../Player")
 
 [node name="Terrain" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -7.47722, 41.5058)
@@ -129,3 +109,11 @@ transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 
 amount = 500
 process_material = SubResource("ParticleProcessMaterial_kwrm5")
 draw_pass_1 = SubResource("QuadMesh_rlidi")
+
+[node name="Player" parent="." instance=ExtResource("4_r8bcl")]
+
+[node name="Enemy" parent="." instance=ExtResource("5_rlidi")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -3.815, 1.12, 13.95)
+
+[node name="Enemy2" parent="." instance=ExtResource("5_rlidi")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 5, 0, 20)

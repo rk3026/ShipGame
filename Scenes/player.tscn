@@ -1,0 +1,35 @@
+[gd_scene load_steps=8 format=3 uid="uid://bk187oli5igtq"]
+
+[ext_resource type="Script" uid="uid://4pps32ny272s" path="res://Scripts/player_controller.gd" id="1_cvnsp"]
+[ext_resource type="PackedScene" uid="uid://1sr7t76pd7q4" path="res://Assets/Models/Ship.glb" id="1_v0iea"]
+[ext_resource type="Script" uid="uid://c6uf5boo6fivj" path="res://Scripts/InputHandler.gd" id="3_x3wgy"]
+[ext_resource type="Script" uid="uid://bfdgbvqornkl8" path="res://Scripts/WeaponController.gd" id="4_3smsa"]
+[ext_resource type="Script" uid="uid://mi31q6fbh7o8" path="res://Scripts/MovementController.gd" id="5_8erm5"]
+[ext_resource type="Script" uid="uid://crnve8alvr2qo" path="res://Scripts/HealthComponent.gd" id="6_f1ek2"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_cvnsp"]
+size = Vector3(3, 1, 3)
+
+[node name="Player" type="CharacterBody3D" node_paths=PackedStringArray("input_handler", "movement", "weapon", "health")]
+script = ExtResource("1_cvnsp")
+input_handler = NodePath("InputHandler")
+movement = NodePath("MovementController")
+weapon = NodePath("WeaponController")
+health = NodePath("HealthComponent")
+
+[node name="Ship" parent="." instance=ExtResource("1_v0iea")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_cvnsp")
+
+[node name="InputHandler" type="Node3D" parent="."]
+script = ExtResource("3_x3wgy")
+
+[node name="WeaponController" type="Node3D" parent="."]
+script = ExtResource("4_3smsa")
+
+[node name="MovementController" type="Node3D" parent="."]
+script = ExtResource("5_8erm5")
+
+[node name="HealthComponent" type="Node3D" parent="."]
+script = ExtResource("6_f1ek2")

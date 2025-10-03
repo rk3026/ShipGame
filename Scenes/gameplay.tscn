@@ -52,6 +52,7 @@ void fragment() {
 
 [sub_resource type="NoiseTexture2D" id="NoiseTexture2D_m34ki"]
 noise = SubResource("FastNoiseLite_wbxth")
+seamless = true
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_m34ki"]
 render_priority = 0

@@ -1,5 +1,5 @@
 extends Resource
-class_name Enemy_Data
+class_name EnemyData
 
 @export var enemy_scene : String
 @export var position_offset : Vector3

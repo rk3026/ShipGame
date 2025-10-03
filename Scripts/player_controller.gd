@@ -3,9 +3,12 @@ extends CharacterBody3D
 @export
 var SPEED:float = 5.0
 
+func process_level(level: Level) -> void:
+	for e in level.enemies:
+		pass
+
+
 func _physics_process(delta: float) -> void:
-
-
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir := Input.get_vector("ui_left", "ui_right", "ui_up", "ui_down")

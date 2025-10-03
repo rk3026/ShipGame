@@ -53,4 +53,3 @@ func _get_property_list() -> Array[Dictionary]:
 			"hint_string" : "TEST"
 		})
 	return properties
-

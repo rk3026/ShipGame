@@ -1,6 +1,7 @@
 @tool
 extends Node3D
 
+
 @export var filename : String :
 	set(value):
 		filename = value
@@ -10,6 +11,7 @@ extends Node3D
 		test = value
 		notify_property_list_changed()
 @export var slider : float
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -19,6 +21,7 @@ func _ready() -> void:
 func _process(_delta: float) -> void:
 	pass
 
+
 func _set(property: StringName, value) -> bool:
 	print("_set() + %s" % property)
 	if property == &"fuck":
@@ -27,8 +30,10 @@ func _set(property: StringName, value) -> bool:
 		return true
 	return false
 
+
 func test_func() -> void:
 	print("FUCK!!!")
+
 
 func _validate_property(property: Dictionary) -> void:
 	match property.name:
@@ -42,6 +47,7 @@ func _validate_property(property: Dictionary) -> void:
 			property.hint = PROPERTY_HINT_RANGE
 			property.hint_string = "0,200,0.5"
 
+
 func _get_property_list() -> Array[Dictionary]:
 	var properties : Array[Dictionary] = []
 	if test:
@@ -53,3 +59,4 @@ func _get_property_list() -> Array[Dictionary]:
 			"hint_string" : "TEST"
 		})
 	return properties
+

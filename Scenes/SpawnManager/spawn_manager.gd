@@ -1,8 +1,8 @@
 @tool
 extends Node
 
-@export_tool_button("check") var e = func():
-	pass
+@export_tool_button("check") var button_test = func():
+	print("FUCK")
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -10,14 +10,13 @@ func _ready() -> void:
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
+func _process(_delta: float) -> void:
 	pass
 
 func processEnemies(level : Level) -> void:
 	for e in level.enemies:
-
 		get_tree().create_timer(e.time_offset).timeout.connect(
-		func () : 
+		func ():
 			var cpy = e
 			makeEnemy(cpy) # <----
 		)
